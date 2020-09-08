@@ -1,6 +1,7 @@
 package com.hj.webservice.springboot.web;
 
 import com.hj.webservice.springboot.service.PostsService;
+import com.hj.webservice.springboot.web.dto.PostsResponseDto;
 import com.hj.webservice.springboot.web.dto.PostsSaveRequestDto;
 import com.hj.webservice.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -21,4 +22,11 @@ public class PostsApiController {
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById (@PathVariable Long id)
+    {
+        return postsService.findById(id);
+    }
+
 }
